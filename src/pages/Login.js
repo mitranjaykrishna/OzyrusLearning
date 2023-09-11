@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../components/common/Navbar";
 import { InputAdornment, TextField } from "@mui/material";
 import { AccountCircle, KeyRounded } from "@mui/icons-material";
 import VisibilityOffRoundedIcon from "@mui/icons-material/VisibilityOffRounded";
