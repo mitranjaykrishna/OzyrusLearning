@@ -9,14 +9,14 @@ const Navbar = () => {
   };
   return (
     <div
-      className="px-[30px] py-[15.6px] fixed w-full "
+      className="px-[30px] py-[13.6px] fixed w-full "
       style={{
         backgroundImage: `url('/assets/Frame 1261152717.svg')`,
       }}
     >
       <div>
         <div className="flex  h-[50px] justify-around items-center text-white   ">
-          <div className="w-[200px] items-center my-[10px]">
+          <div className="w-[200px] items-center ">
             <img src="/assets/image 12.png" alt="N/A" />
           </div>
           {/* for big and mid screen */}
