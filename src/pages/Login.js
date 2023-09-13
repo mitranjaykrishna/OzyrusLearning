@@ -2,7 +2,6 @@ import React from "react";
 import { InputAdornment, TextField } from "@mui/material";
 import { AccountCircle, KeyRounded } from "@mui/icons-material";
 import VisibilityOffRoundedIcon from "@mui/icons-material/VisibilityOffRounded";
-
 const Login = () => {
   const inputStyle = {
     background: "radial-gradient(#424242 , #2b2b2b )",
@@ -123,7 +122,7 @@ const Login = () => {
                   className=" object-cover w-8   "
                 />
               </div>
-              <div className=" bg-gradient-to-r from-[#424242] to-[#2b2b2b] px-4 py-2 rounded-[10px] hover:cursor-pointer ">
+              <div className=" bg-gradient-to-r from-[rgb(66,66,66)] to-[#2b2b2b] px-4 py-2 rounded-[10px] hover:cursor-pointer ">
                 <img
                   src="/assets/107175_circle_facebook_icon (1).png"
                   alt="ds"

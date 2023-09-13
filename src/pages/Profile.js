@@ -1,15 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Card1 from "../components/common/cards/Card1";
 import Items from "../utils/Items";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import { FormControl, MenuItem, Select } from "@mui/material";
+
+import Drop1 from "../utils/Drop1";
+import Drop2 from "../utils/Drop2";
 const Profile = () => {
-  const [selectedOption, setSelectedOption] = useState("Name");
-
-  const handleChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
-
   return (
     <div
       className="bg-cover bg-center text-white min-h-screen "
@@ -29,40 +24,11 @@ const Profile = () => {
           />
         </div>
       </div>
-      <div className="flex justify-around mb-32">
-        <div className="">
-          <FormControl
-            variant="standard"
-            sx={{
-              background: "transparent",
-              borderRadius: "8px",
-              borderColor: "transparent",
-              borderBottom: "none",
-              color: "white",
-              "& .MuiSelect-icon": {
-                display: "none",
-              },
-            }}
-          >
-            <Select
-              value={selectedOption}
-              onChange={handleChange}
-              sx={{
-                "& .MuiMenuItem-root": {
-                  color: "red", // Change color for menu items
-                },
-              }}
-            >
-              <MenuItem value="Name">Name</MenuItem>
-              <MenuItem value="Price">Price</MenuItem>
-              <MenuItem value="Likes">Likes</MenuItem>
-              <MenuItem value="Date Added">Date Added</MenuItem>
-            </Select>
-          </FormControl>
-          <ArrowUpwardIcon className=" -ml-4" />
-        </div>
+      <div className="flex justify-around mb-2">
+        <Drop1 />
+        <Drop2 />
       </div>
-      <div className="grid grid-cols-4 gap-16 mx-20 overflow-y-hidden ">
+      <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 lg:mx-20 mx-5">
         {Items.map((item, i) => (
           <Card1
             key={item.itemId}
