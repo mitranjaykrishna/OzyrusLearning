@@ -5,7 +5,7 @@ import Profile from "./pages/Profile";
 
 function App() {
   return (
-    <div>
+    <div className="">
       <Navbar />
       {/* <Login/> */}
       <Profile />

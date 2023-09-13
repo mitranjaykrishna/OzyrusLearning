@@ -4,6 +4,7 @@ import Items from "../utils/Items";
 
 import Drop1 from "../utils/Drop1";
 import Drop2 from "../utils/Drop2";
+import Footer from "../components/common/Footer";
 const Profile = () => {
   return (
     <div
@@ -40,6 +41,7 @@ const Profile = () => {
           />
         ))}
       </div>
+      <Footer />
     </div>
   );
 };
