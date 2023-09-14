@@ -16,7 +16,7 @@ const Navbar = () => {
     >
       <div>
         <div className="flex  h-[50px] justify-around items-center text-white   ">
-          <div className="w-[200px] items-center ">
+          <div className=" items-center ">
             <img src="/assets/image 12.png" alt="N/A" />
           </div>
           {/* for big and mid screen */}

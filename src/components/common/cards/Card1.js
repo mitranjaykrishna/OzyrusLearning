@@ -1,7 +1,8 @@
 import { Button } from "@mui/material";
 import React from "react";
 
-const Card1 = ({ key, imageUrl, dpUrl, userName, assetName, category }) => {
+const Card1 = (props) => {
+  const { imageUrl, dpUrl, userName, assetName, category } = props;
   return (
     <div className=" bg-white text-black flex flex-col justify-between rounded-xl pb-10">
       <div className="rounded-lg  object-cover relative py-32 px-10 pb-[65%]">
