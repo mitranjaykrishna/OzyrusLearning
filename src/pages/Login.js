@@ -2,6 +2,7 @@ import React from "react";
 import { InputAdornment, TextField } from "@mui/material";
 import { AccountCircle, KeyRounded } from "@mui/icons-material";
 import VisibilityOffRoundedIcon from "@mui/icons-material/VisibilityOffRounded";
+import { Link } from "react-router-dom";
 const Login = () => {
   const inputStyle = {
     background: "radial-gradient(#424242 , #2b2b2b )",
@@ -34,7 +35,9 @@ const Login = () => {
                 id="outlined-basic"
                 placeholder="UserName"
                 variant="outlined"
-                sx={{ ...inputStyle }}
+                sx={{
+                  ...inputStyle,
+                }}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -133,9 +136,9 @@ const Login = () => {
             <div className="mx text-center mt-5">
               <p> Don’t have an account? </p>
               <div className="flex flex-col justify-center  gap-3">
-                <p className="  ">
+                <p className="">
                   <span className="font-bold underline underline-offset-4 hover:cursor-pointer">
-                    Sign up
+                    <Link to="/SignUp"> Sign up</Link>
                   </span>
                   {"  "}
                   here

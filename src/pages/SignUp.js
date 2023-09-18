@@ -1,14 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import { InputAdornment, TextField } from "@mui/material";
 import { AccountCircle, KeyRounded } from "@mui/icons-material";
-import VisibilityOffRoundedIcon from "@mui/icons-material/VisibilityOffRounded";
+import { Link } from "react-router-dom";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../config";
 const SignUp = () => {
+  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState([
+    {
+      firstName: "",
+      lastName: "",
+      userName: "",
+      password: "",
+      confirmPassword: "",
+    },
+  ]);
+  const handleGoogleSignIn = () => {
+    console.log("first");
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // Handle successful sign-in
+        console.log("Google Sign-In Successful");
+        console.log(result);
+      })
+      .catch((error) => {
+        // Handle sign-in error
+        console.error("Google Sign-In Error:", error);
+      });
+  };
+  const handleSignUp = () => {
+    if (user.password !== user.confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+    console.log("Account Created Successfully");
+    console.log(user);
+    console.log(users);
+    setUsers([...users, user]);
+    setUser({
+      firstName: "",
+      lastName: "",
+      userName: "",
+      password: "",
+      confirmPassword: "",
+    });
+  };
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setUser((users) => {
+      return {
+        ...users,
+        [name]: value,
+      };
+    });
+  };
   const inputStyle = {
     background: "radial-gradient(#424242 , #2b2b2b )",
     color: "white",
     width: "100%",
     "&::placeholder": {
-      color: "white", // Placeholder color
+      color: "white",
     },
   };
   return (
@@ -36,7 +87,12 @@ const SignUp = () => {
                   id="outlined-basic"
                   placeholder="First Name"
                   variant="outlined"
-                  sx={{ ...inputStyle }}
+                  name="firstName"
+                  value={user.firstName}
+                  onChange={handleChange}
+                  sx={{
+                    ...inputStyle,
+                  }}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -57,6 +113,9 @@ const SignUp = () => {
                   id="outlined-basic"
                   placeholder="Last Name"
                   variant="outlined"
+                  name="lastName"
+                  value={user.lastName}
+                  onChange={handleChange}
                   sx={{ ...inputStyle }}
                   InputProps={{
                     startAdornment: (
@@ -73,13 +132,15 @@ const SignUp = () => {
                 />
               </div>
             </div>
-
             <div className="w-full">
               <p className="text-[15px] font-poppins">Username</p>
               <TextField
                 id="outlined-basic"
                 placeholder="UserName"
                 variant="outlined"
+                name="userName"
+                value={user.userName}
+                onChange={handleChange}
                 sx={{ ...inputStyle }}
                 InputProps={{
                   startAdornment: (
@@ -101,6 +162,9 @@ const SignUp = () => {
                 id="outlined-basic"
                 placeholder="Password"
                 variant="outlined"
+                name="password"
+                value={user.password}
+                onChange={handleChange}
                 sx={{ ...inputStyle }}
                 InputProps={{
                   endAdornment: (
@@ -119,9 +183,12 @@ const SignUp = () => {
             <div className="mt-[12px]">
               <p className="text-[15px] font-poppins">Enter Password Again</p>
               <TextField
+                name="confirmPassword"
+                value={user.confirmPassword}
                 id="outlined-basic"
                 placeholder="Password"
                 variant="outlined"
+                onChange={handleChange}
                 sx={{ ...inputStyle }}
                 InputProps={{
                   endAdornment: (
@@ -139,7 +206,7 @@ const SignUp = () => {
             </div>
             <div
               className="text-[32px] text-black text-center mt-6 rounded-[20px] bg-gradient-to-r from-purple-500 to-pink-500 hover:cursor-pointer"
-              // onClick={"/"}
+              onClick={handleSignUp}
             >
               <div className="flex justify-center items-center text-[16px]  py-[10px] font-poppins text-black text-center  ">
                 <p className="text-center text-white ">Sign Up</p>
@@ -164,7 +231,10 @@ const SignUp = () => {
               ></div>
             </div>
             <div className="flex justify-center   gap-[20px]    ">
-              <div className=" bg-gradient-to-r from-[#424242] to-[#2b2b2b] px-4 py-2 rounded-[10px]  hover:cursor-pointer ">
+              <div
+                onClick={handleGoogleSignIn}
+                className=" bg-gradient-to-r from-[#424242] to-[#2b2b2b] px-4 py-2 rounded-[10px]  hover:cursor-pointer "
+              >
                 <img
                   src="/assets/7123025_logo_google_g_icon.png"
                   alt="ds"
@@ -191,7 +261,7 @@ const SignUp = () => {
               <div className="flex flex-col justify-center  gap-3">
                 <p className="pb-2">
                   <span className="font-bold underline underline-offset-4 hover:cursor-pointer">
-                    Login
+                    <Link to="/"> Login </Link>
                   </span>
                   {"  "}
                   here
@@ -204,5 +274,4 @@ const SignUp = () => {
     </div>
   );
 };
-
 export default SignUp;

@@ -1,6 +1,7 @@
 import { IconButton, SwipeableDrawer } from "@mui/material";
 import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
+import NavProfiile from "../../utils/NavProfiile";
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
@@ -29,6 +30,7 @@ const Navbar = () => {
               <li>Community</li>
             </ul>
           </div>
+
           {/* For small screen */}
           <div className="md:hidden">
             <IconButton onClick={toggleDrawer(true)}>
@@ -64,8 +66,9 @@ const Navbar = () => {
               </div>
             </SwipeableDrawer>
           </div>
-
-          <div></div>
+          <div>
+            <NavProfiile />
+          </div>
         </div>
       </div>
     </div>
