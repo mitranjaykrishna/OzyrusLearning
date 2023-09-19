@@ -1,0 +1,21 @@
+/* Home.css */
+
+.active-button {
+    background-color: #343434;
+    border: none;
+    box-shadow: none;
+    font-size: none;
+    border-radius: 18%;
+    padding: 2% 4%;
+  }
+  
+  .inactive-button {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    font-size: none;
+    padding: 2% 4%;
+    /* Add any other styles for the inactive button */
+  }
+  
+

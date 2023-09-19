@@ -2,8 +2,12 @@ import React from "react";
 import { InputAdornment, TextField } from "@mui/material";
 import { AccountCircle, KeyRounded } from "@mui/icons-material";
 import VisibilityOffRoundedIcon from "@mui/icons-material/VisibilityOffRounded";
-import { Link } from "react-router-dom";
-const Login = () => {
+import { Link, useNavigate } from "react-router-dom";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../config";
+const Login = (props) => {
+  const Navigate = useNavigate();
+  console.log(props);
   const inputStyle = {
     background: "radial-gradient(#424242 , #2b2b2b )",
     color: "white",
@@ -11,6 +15,22 @@ const Login = () => {
     "&::placeholder": {
       color: "white", // Placeholder color
     },
+  };
+  const handleGoogleSignIn = () => {
+    console.log("first");
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // Handle successful sign-in
+        console.log("Google Sign-In Successful");
+        console.log(result);
+        console.log(props);
+        props.setAuth(true);
+        Navigate("/Home");
+      })
+      .catch((error) => {
+        // Handle sign-in error
+        console.error("Google Sign-In Error:", error);
+      });
   };
   return (
     <div
@@ -111,7 +131,10 @@ const Login = () => {
               ></div>
             </div>
             <div className="flex justify-center   gap-[20px]    ">
-              <div className=" bg-gradient-to-r from-[#424242] to-[#2b2b2b] px-4 py-2 rounded-[10px]  hover:cursor-pointer ">
+              <div
+                onClick={handleGoogleSignIn}
+                className=" bg-gradient-to-r from-[#424242] to-[#2b2b2b] px-4 py-2 rounded-[10px]  hover:cursor-pointer "
+              >
                 <img
                   src="/assets/7123025_logo_google_g_icon.png"
                   alt="ds"

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { InputAdornment, TextField } from "@mui/material";
 import { AccountCircle, KeyRounded } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../config";
-const SignUp = () => {
+const SignUp = (props) => {
+  const Navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState([
     {
@@ -22,6 +23,9 @@ const SignUp = () => {
         // Handle successful sign-in
         console.log("Google Sign-In Successful");
         console.log(result);
+        console.log(props);
+        props.setAuth(true);
+        Navigate("/Profile");
       })
       .catch((error) => {
         // Handle sign-in error
