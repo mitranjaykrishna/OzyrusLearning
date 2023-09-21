@@ -4,8 +4,15 @@ import Items from "../utils/Items";
 import Drop2 from "../utils/Drop2";
 import "../css/Home.css";
 import Card2 from "../components/common/cards/Card2";
+import { Button } from "@mui/material";
 const Home = () => {
   const [activeButton, setActiveButton] = useState("All");
+  const [showAllCharacters, setShowAllCharacters] = useState(false);
+  const toggleShowAllItems = () => {
+    setShowAllCharacters(!showAllCharacters);
+  };
+
+  const VisibleCharaters = showAllCharacters ? Items : Items.slice(0, 4);
   return (
     <div
       className="bg-cover bg-center text-white min-h-screen "
@@ -96,7 +103,6 @@ const Home = () => {
         </div>
         <Drop2 />
       </div>
-
       <div className="grid md:grid-cols-2 ">
         <div>
           {" "}
@@ -121,6 +127,64 @@ const Home = () => {
         <Card2 />
         <Card2 /> <Card2 />
         <Card2 /> <Card2 />
+      </div>
+      <div className=" text-[230%] flex lg:mx-20 mx-5 my-10 font-poppins">
+        Explore Characters
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 lg:mx-20 mx-5">
+        {VisibleCharaters.map((item, i) => (
+          <Card1
+            key={item.itemId}
+            imageUrl={item.imageUrl}
+            dpUrl={item.dpUrl}
+            userName={item.userName}
+            assetName={item.assetName}
+            category={item.category}
+          />
+        ))}
+      </div>
+      <div className="flex justify-center mt-5">
+        <Button
+          className="text-[100%]    text-center  mt-6 rounded-[20px] bg-gradient-to-r from-purple-500 to-pink-500 hover:cursor-pointer"
+          onClick={toggleShowAllItems}
+        >
+          <div className="flex justify-center items-center text-[16px] font-poppins text-black text-center  ">
+            <p className="text-center text-white ">View More</p>
+          </div>
+        </Button>
+      </div>
+      <div className=" text-[230%] flex lg:mx-20 mx-5 my-10 font-poppins">
+        Explore Buildings
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 lg:mx-20 mx-5">
+        {Items.map((item, i) => (
+          <Card1
+            key={item.itemId}
+            imageUrl={item.imageUrl}
+            dpUrl={item.dpUrl}
+            userName={item.userName}
+            assetName={item.assetName}
+            category={item.category}
+          />
+        ))}
+      </div>
+      <div className=" text-[230%] flex lg:mx-20 mx-5 my-10 font-poppins">
+        Explore Wepons
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 lg:mx-20 mx-5">
+        {Items.map((item, i) => (
+          <Card1
+            key={item.itemId}
+            imageUrl={item.imageUrl}
+            dpUrl={item.dpUrl}
+            userName={item.userName}
+            assetName={item.assetName}
+            category={item.category}
+          />
+        ))}
+      </div>{" "}
+      <div className=" text-[230%] flex lg:mx-20 mx-5 my-10 font-poppins">
+        Explore New Creators
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 lg:mx-20 mx-5">
         {Items.map((item, i) => (
